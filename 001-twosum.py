@@ -20,8 +20,5 @@ class Solution(object):
         if m in rest_nums:
           return [n_index, n_index+1+rest_nums.index(m)]
 
- 
-
-
 if __name__ == '__main__':
     print( Solution().twoSum([2, 7, 11, 15], 13) )
