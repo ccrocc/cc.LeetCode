@@ -17,7 +17,7 @@ var maxArea_BF = function (height) {
   let max_area = 0
   for (let i = 0, l = height.length; i < l; i++) {
     let area = 0
-    for (let j = i+2; j < l; j++) {
+    for (let j = i + 1; j < l; j++) {
       area = Math.min(height[i], height[j]) * (j - i)
       max_area = Math.max(max_area, area)
     }
@@ -28,12 +28,15 @@ var maxArea_BF = function (height) {
 
 var maxArea = function (height) {
   let max_area = 0
-  for (let i = 0, l = height.length; i < l; i++) {
-    let area = 0
-    for (let j = i + 2; j < l; j++) {
-      area = Math.min(height[i], height[j]) * (j - i)
-      max_area = Math.max(max_area, area)
-    }
+  let [l, r] = [0, height.length-1]
+  let area
+  while(l < r) {
+    area = (r-l) * Math.min(height[l], height[r])
+    max_area = Math.max(area, max_area)
+    if (height[r] > height[l])
+      l++
+    else
+      r-- 
   }
   return max_area
 };
@@ -43,6 +46,14 @@ let testCases = [
   {
     input: [1, 8, 6, 2, 5, 4, 8, 3, 7],
     output: 49
+  },
+  {
+    input: [1, 1],
+    output: 1
+  },
+  {
+    input: [1, 1, 1],
+    output: 2
   },
 ]
 
