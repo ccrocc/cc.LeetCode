@@ -33,12 +33,12 @@ var threeSum_BF = function (nums) {
       var rest = - nums[i] - nums[j]
       var rest_index = nums.indexOf(rest, j + 1)   
       if (rest_index > 0) {
-        let [a, b, c] = [nums[i], nums[j], nums[rest_index]].sort()
+        let [a, b, c] = [nums[i], nums[j], nums[rest_index]]
         rs.set(`${a}|${b}|${c}`, [a, b, c])
       }
     }
   }  
-  return [...rs.values()].sort()
+  return [...rs.values()]
 };
 
 /**
@@ -52,7 +52,6 @@ loop(i) & test sum
 var threeSum = function (nums) {
   let rs = new Map()
   nums.sort(function (a, b) { return a - b })
-  // console.log('nums', nums);
 
   for (let i = 0, l = nums.length; i < l - 2; i++) {
     // while duplicate, go next
@@ -62,11 +61,8 @@ var threeSum = function (nums) {
     while (j < k) {
       let [a, b, c] = [nums[i], nums[j], nums[k]]
       let sum = nums[i] + nums[j] + nums[k]
-      // console.log([i, j, k], [a, b, c], sum); 
       if (sum === 0) {
         rs.set(`${a}|${b}|${c}`, [a, b, c])
-        // sort rs just for mocha
-        // rs.set(`${a}|${b}|${c}`, [a, b, c].sort())
         k--
         j++
         // while duplicate, go next. ****
@@ -81,8 +77,6 @@ var threeSum = function (nums) {
   }
 
   return [...rs.values()]
-  // sort rs just for mocha
-  // return [...rs.values()].sort()
 };
 
 /**************************/
@@ -92,30 +86,44 @@ let testCases = [
     output: [
       [-1, 0, 1],
       [-1, -1, 2]
-    ].sort(),
+    ],
   },
   {
     input: [0, 0, 0, 0],
     output: [
       [0, 0, 0],
-    ].sort(),
+    ],
   },
   {
     input: [-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6],
     output: [
-      [-4, -2, 6].sort(),
-      [-4, 0, 4].sort(), 
-      [-4, 1, 3].sort(), 
-      [-4, 2, 2].sort(), 
-      [-2, -2, 4].sort(), 
-      [-2, 0, 2].sort()
-    ].sort(),
+      [-4, -2, 6],
+      [-4, 0, 4], 
+      [-4, 1, 3], 
+      [-4, 2, 2], 
+      [-2, -2, 4], 
+      [-2, 0, 2]
+    ],
   },
 ]
 
+testCases.forEach(e => {
+  e.output.forEach(e => e.sort())
+  e.output.sort()
+  return e
+});
+
 let testFuns = {
-  threeSum_BF,
-  threeSum,
+  threeSum_BF: (nums) => {
+    let rs = threeSum_BF(nums)
+    rs.forEach(e => e.sort());
+    return rs.sort()
+  },
+  threeSum: (nums) => {
+    let rs = threeSum(nums)
+    rs.forEach(e => e.sort());
+    return rs.sort()
+  }
 }
 
 require('../TestFrame')(testCases, testFuns)
