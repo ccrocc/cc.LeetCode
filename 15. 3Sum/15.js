@@ -50,8 +50,8 @@ loop(i) & test sum
         j->     <-k
  */
 var threeSum = function (nums) {
-  let rs = new Map()
-  nums.sort(function (a, b) { return a - b })
+  let rs = []
+  nums.sort((a, b) => (a - b))
 
   for (let i = 0, l = nums.length; i < l - 2; i++) {
     // while duplicate, go next
@@ -62,21 +62,20 @@ var threeSum = function (nums) {
       let [a, b, c] = [nums[i], nums[j], nums[k]]
       let sum = nums[i] + nums[j] + nums[k]
       if (sum === 0) {
-        rs.set(`${a}|${b}|${c}`, [a, b, c])
+        rs.push([a, b, c])
+      }
+      if (sum > 0) {
         k--
-        j++
         // while duplicate, go next. ****
-        while (j < k && nums[j - 1] == nums[j]) j++
         while (j < k && nums[k] == nums[k + 1]) k--
-      } else if (sum > 0) {
-        k--
       } else {
         j++
+        while (j < k && nums[j - 1] == nums[j]) j++
       }
     }
   }
 
-  return [...rs.values()]
+  return rs
 };
 
 /**************************/
