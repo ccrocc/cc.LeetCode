@@ -7,6 +7,7 @@
  */
 var nextPermutation = function (nums) {
   let len = nums.length
+  if (!nums || len == 0) return []
   let firstSmall = null
 
   for (let i = len - 2; i >= 0; i--) {
