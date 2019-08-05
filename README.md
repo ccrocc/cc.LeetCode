@@ -4,8 +4,8 @@
 > src: https://www.douban.com/note/330562764/
 
 #### 利用堆栈：
-- [ ] http://oj.leetcode.com/problems/evaluate-reverse-polish-notation/
-- [ ] http://oj.leetcode.com/problems/longest-valid-parentheses/ （也可以用一维数组，贪心）
+- [x] http://oj.leetcode.com/problems/evaluate-reverse-polish-notation/
+- [x] *** http://oj.leetcode.com/problems/longest-valid-parentheses/ （也可以用一维数组，贪心）
 - [ ] http://oj.leetcode.com/problems/valid-parentheses/
 - [ ] http://oj.leetcode.com/problems/largest-rectangle-in-histogram/
 - [ ] 特别注意细节：http://oj.leetcode.com/problems/trapping-rain-water/
