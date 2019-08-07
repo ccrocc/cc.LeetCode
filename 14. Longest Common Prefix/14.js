@@ -1,30 +1,32 @@
 /**
-14. Longest Common Prefix
-
-Write a function to find the longest common prefix string amongst an array of strings.
-
-If there is no common prefix, return an empty string "".
-
-Example 1:
-
-Input: ["flower","flow","flight"]
-Output: "fl"
-Example 2:
-
-Input: ["dog","racecar","car"]
-Output: ""
-Explanation: There is no common prefix among the input strings.
-Note:
-
-All given inputs are in lowercase letters a-z.
-
- */
-
-/**
+ * @summary 14. Longest Common Prefix
+ * @description https://leetcode.com/problems/longest-common-prefix/
+ * @author ccro
  * @param {string[]} strs
  * @return {string}
  */
 var longestCommonPrefix = function (strs) {
+  let strs_len = strs.length || 0
+  if (!strs || strs_len < 1) return ""
+  if (strs_len == 1) return strs[0]
+
+  strs.sort(function (a, b) { return a.length - b.length });
+
+  let prefix = ''
+  for (let j = 0, str_len = strs[0].length; j < str_len; j++) {
+    let char = strs[0].charAt(j)
+    let i    
+    for (i = 1; i < strs_len; i++) {
+      if (strs[i].charAt(j) !== char) break
+    }
+    if (i >= strs_len) prefix += char
+    else break
+  }
+
+  return prefix
+}
+
+var longestCommonPrefix_old = function (strs) {
   let strs_len = strs.length || 0
   if (!strs || strs_len < 1) return ""
   if (strs_len == 1) return strs[0]  
@@ -98,6 +100,7 @@ let testCases = [
 
 let testFuns = {
   longestCommonPrefix,  // O(S)
+  longestCommonPrefix_old,
   longestCommonPrefix_1,
 }
 
