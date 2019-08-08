@@ -30,7 +30,7 @@
 #### 简单数学：
 - [x] http://oj.leetcode.com/problems/pascals-triangle/
 - [ ] http://oj.leetcode.com/problems/pascals-triangle-ii/
-- [ ] http://oj.leetcode.com/problems/powx-n/
+- [x] http://oj.leetcode.com/problems/powx-n/
 - [ ] http://oj.leetcode.com/problems/reverse-integer/
 - [ ] http://oj.leetcode.com/problems/plus-one/
 - [ ] http://oj.leetcode.com/problems/unique-paths/
