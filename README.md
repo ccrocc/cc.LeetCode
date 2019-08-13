@@ -13,7 +13,7 @@
 #### 多种数据结构：
 - [ ] http://oj.leetcode.com/problems/lru-cache/
 - [ ] http://oj.leetcode.com/problems/substring-with-concatenation-of-all-words/ (注意遍历方法）
-- [ ] HASH：http://oj.leetcode.com/problems/longest-consecutive-sequence/
+- [x] *** HASH：http://oj.leetcode.com/problems/longest-consecutive-sequence/
 
 #### 简单编程：
 - [x] http://oj.leetcode.com/problems/longest-common-prefix/
@@ -40,26 +40,26 @@
 - [ ] http://oj.leetcode.com/problems/valid-number/
 - [ ] http://oj.leetcode.com/problems/climbing-stairs/
 - [ ] http://oj.leetcode.com/problems/roman-to-integer/
-- [ ] http://oj.leetcode.com/problems/integer-to-roman/
+- [x] http://oj.leetcode.com/problems/integer-to-roman/
 - [x] http://oj.leetcode.com/problems/divide-two-integers/
 - [ ] 区间：http://oj.leetcode.com/problems/insert-interval/
 
 #### 大数的数学运算：
-- [ ] http://oj.leetcode.com/problems/add-binary/
-- [ ] http://oj.leetcode.com/problems/add-two-numbers/
+- [x] http://oj.leetcode.com/problems/add-binary/
+- [x] http://oj.leetcode.com/problems/add-two-numbers/
 
 #### 数组：
-- [ ] http://oj.leetcode.com/problems/remove-element/
-- [ ] http://oj.leetcode.com/problems/merge-sorted-array/
+- [x] http://oj.leetcode.com/problems/remove-element/
+- [x] http://oj.leetcode.com/problems/merge-sorted-array/
 - [ ] http://oj.leetcode.com/problems/first-missing-positive/
 - [ ] http://oj.leetcode.com/problems/spiral-matrix/
 - [ ] http://oj.leetcode.com/problems/spiral-matrix-ii/
 - [ ] http://oj.leetcode.com/problems/rotate-image/
-- [ ] 遍历技巧：http://oj.leetcode.com/problems/container-with-most-water/
-- [ ] http://oj.leetcode.com/problems/two-sum/
-- [ ] http://oj.leetcode.com/problems/3sum/
-- [ ] http://oj.leetcode.com/problems/3sum-closest/
-- [ ] http://oj.leetcode.com/problems/4sum/
+- [x] 遍历技巧：http://oj.leetcode.com/problems/container-with-most-water/
+- [x] http://oj.leetcode.com/problems/two-sum/
+- [x] http://oj.leetcode.com/problems/3sum/
+- [x] http://oj.leetcode.com/problems/3sum-closest/
+- [x] http://oj.leetcode.com/problems/4sum/
 - [ ] http://oj.leetcode.com/problems/set-matrix-zeroes/
 - [ ] 用好标记数组：http://oj.leetcode.com/problems/valid-sudoku/
 - [ ] http://oj.leetcode.com/problems/next-permutation/
