@@ -23,7 +23,7 @@
 - [x] 二分查找：http://oj.leetcode.com/problems/search-a-2d-matrix/
 - [ ] 二分查找进阶：http://oj.leetcode.com/problems/search-for-a-range/
 - [x] *** 二分查找应用：http://oj.leetcode.com/problems/sqrtx/
-- [ ] 二分查找应用：http://oj.leetcode.com/problems/search-insert-position/
+- [x] 二分查找应用：http://oj.leetcode.com/problems/search-insert-position/
 - [ ] 二分查找变种：http://oj.leetcode.com/problems/search-in-rotated-sorted-array/
 - [ ] 二分查找变种：http://oj.leetcode.com/problems/search-in-rotated-sorted-array-ii/
 

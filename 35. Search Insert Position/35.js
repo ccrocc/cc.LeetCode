@@ -6,7 +6,27 @@
  * @param {number} target
  * @return {number}
  */
+// Binary Search, O(logn)
 var searchInsert = function (nums, target) {
+
+  let [left, right] = [0, nums.length - 1]
+  while (left <= right) {
+    let mid = parseInt((left + right) / 2)
+    
+    if (target > nums[mid]) {
+      left = mid + 1
+    } else if (target < nums[mid]) {
+      right = mid - 1 
+    } else {
+      return mid
+    }
+  }
+
+  return left // **left ot right
+};
+
+// O(n)
+var searchInsert_s1 = function (nums, target) {
   let index, len = nums.length
   for (let i = 0; i <= len; i++) {
     index = i
@@ -50,6 +70,7 @@ let testCases = [
 
 let testFuns = {
   searchInsert,
+  // searchInsert_s1,
 }
 
 require('../TestFrame')(testCases, testFuns)
