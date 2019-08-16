@@ -29,7 +29,7 @@
 
 #### 简单数学：
 - [x] http://oj.leetcode.com/problems/pascals-triangle/
-- [ ] http://oj.leetcode.com/problems/pascals-triangle-ii/
+- [x] http://oj.leetcode.com/problems/pascals-triangle-ii/
 - [x] http://oj.leetcode.com/problems/powx-n/
 - [ ] http://oj.leetcode.com/problems/reverse-integer/
 - [ ] http://oj.leetcode.com/problems/plus-one/
@@ -39,7 +39,7 @@
 - [ ] http://oj.leetcode.com/problems/merge-intervals/
 - [ ] http://oj.leetcode.com/problems/valid-number/
 - [ ] http://oj.leetcode.com/problems/climbing-stairs/
-- [ ] http://oj.leetcode.com/problems/roman-to-integer/
+- [x] http://oj.leetcode.com/problems/roman-to-integer/
 - [x] http://oj.leetcode.com/problems/integer-to-roman/
 - [x] http://oj.leetcode.com/problems/divide-two-integers/
 - [x] 区间：http://oj.leetcode.com/problems/insert-interval/
