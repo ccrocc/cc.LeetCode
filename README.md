@@ -33,7 +33,7 @@
 - [x] http://oj.leetcode.com/problems/powx-n/
 - [ ] http://oj.leetcode.com/problems/reverse-integer/
 - [ ] http://oj.leetcode.com/problems/plus-one/
-- [ ] http://oj.leetcode.com/problems/unique-paths/
+- [x] http://oj.leetcode.com/problems/unique-paths/
 - [ ] http://oj.leetcode.com/problems/palindrome-number/
 - [ ] http://oj.leetcode.com/problems/permutation-sequence/
 - [ ] http://oj.leetcode.com/problems/merge-intervals/
