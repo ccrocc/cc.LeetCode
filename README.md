@@ -126,7 +126,7 @@
 - [ ] http://oj.leetcode.com/problems/word-break/
 - [ ] http://oj.leetcode.com/problems/word-break-ii/
 - [ ] http://oj.leetcode.com/problems/unique-binary-search-trees/  （动态规划避免递归）
-- [ ] http://oj.leetcode.com/problems/unique-paths-ii/
+- [x] ** http://oj.leetcode.com/problems/unique-paths-ii/
 - [ ] http://oj.leetcode.com/problems/scramble-string/
 - [ ] http://oj.leetcode.com/problems/palindrome-partitioning/
 - [ ] http://oj.leetcode.com/problems/palindrome-partitioning-ii/
