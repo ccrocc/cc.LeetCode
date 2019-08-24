@@ -29,14 +29,14 @@ var uniquePaths = function (m, n) {
 
 
 
-// recursive s1
+// DP; recursive s1
 var arr = []
 var uniquePaths_s1 = function (m, n) {
   if (m <= 0 || n <= 0) return 0
   if (m == 1 && n == 1) return 1
     
   if (!arr[`${m}|${n}`]) {
-    arr[`${m}|${n}`] = uniquePaths(m - 1, n) + uniquePaths(m, n - 1)
+    arr[`${m}|${n}`] = uniquePaths_s1(m - 1, n) + uniquePaths_s1(m, n - 1)
   }
   return arr[`${m}|${n}`]
 };

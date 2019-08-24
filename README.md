@@ -120,7 +120,7 @@
 
 #### 动态规划：
 - [ ] http://oj.leetcode.com/problems/triangle/  （最短路径）
-- [ ] http://oj.leetcode.com/problems/subsets/ （另一种形式）
+- [x] *** http://oj.leetcode.com/problems/subsets/ （另一种形式）
 - [ ] http://oj.leetcode.com/problems/subsets-ii/
 - [ ] http://oj.leetcode.com/problems/edit-distance/ （经典）
 - [ ] http://oj.leetcode.com/problems/word-break/
