@@ -122,8 +122,8 @@
 - [ ] http://oj.leetcode.com/problems/triangle/  （最短路径）
 - [x] *** http://oj.leetcode.com/problems/subsets/ （另一种形式）
 - [x] *** http://oj.leetcode.com/problems/subsets-ii/
-- [ ] http://oj.leetcode.com/problems/edit-distance/ （经典）
-- [ ] http://oj.leetcode.com/problems/word-break/
+- [ ] http://oj.leetcode.com/problems/edit-distance/ （经典）- [hard...]
+- [x] ** http://oj.leetcode.com/problems/word-break/
 - [ ] http://oj.leetcode.com/problems/word-break-ii/
 - [ ] http://oj.leetcode.com/problems/unique-binary-search-trees/  （动态规划避免递归）
 - [x] ** http://oj.leetcode.com/problems/unique-paths-ii/
