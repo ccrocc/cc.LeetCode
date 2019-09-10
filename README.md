@@ -90,7 +90,7 @@
 - [ ] http://oj.leetcode.com/problems/reverse-linked-list-ii/
 
 #### 二叉树遍历：递归 & 非递归
-- [ ] http://oj.leetcode.com/problems/same-tree/
+- [x] http://oj.leetcode.com/problems/same-tree/
 - [ ] 前序：http://oj.leetcode.com/problems/binary-tree-preorder-traversal/
 - [ ] 中序：http://oj.leetcode.com/problems/binary-tree-inorder-traversal/
 - [ ] 后序：http://oj.leetcode.com/problems/binary-tree-postorder-traversal/
