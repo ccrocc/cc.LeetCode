@@ -1,24 +1,7 @@
 /**
-15. 3Sum
-
-Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
-
-Note:
-
-The solution set must not contain duplicate triplets.
-
-Example:
-
-Given array nums = [-1, 0, 1, 2, -1, -4],
-
-A solution set is:
-[
-  [-1, 0, 1],
-  [-1, -1, 2]
-]
- */
-
-/**
+ * @summary 15. 3Sum
+ * @description https://leetcode.com/problems/3sum/
+ * @author ccro
  * @param {number[]} nums
  * @return {number[][]}
  */
@@ -78,6 +61,40 @@ var threeSum = function (nums) {
   return rs
 };
 
+// O(n) and O(n) with a set
+var threeSum_redo  = function (nums) {
+  // (a+b+c) = 0; then c=0-(a+b); 2 loop,get (a, b) then find c in a set
+  // 1. sort the nums
+  nums = nums.sort((a, b) => (a - b))
+  console.log('\n\nsorted nums:', nums);
+
+  // let rs = {}
+  let rs = []
+  
+  // 1. build set for nums
+  for (let i = 0, l = nums.length; i < l-2; i++) {
+    if (i > 0 && nums[i] == nums[i-1])  continue;
+    for (let j = i+1; j < l - 1; j++) {
+      if (j > i+1 && nums[j] == nums[j-1])  continue;
+      
+      var test_num_set = new Set(nums.slice(j+1, l));// j -> l
+
+      console.log('[i, j]:', i, j, '  [n1, n2]:', nums[i], nums[j]);
+    
+      let check_num = 0-(nums[i]+nums[j])
+      console.log('test num set:', test_num_set, 'check_num:', check_num);
+
+      if (test_num_set.has(check_num)) {
+        console.log('got ans:', [nums[i], nums[j], check_num])
+        // rs[`${nums[i]}|${nums[j]}|${check_num}`] = [nums[i], nums[j], check_num]
+        rs.push([nums[i], nums[j], check_num])
+      }
+    }
+  }
+  // console.log('rs:', rs)
+  // return Object.values(rs);
+  return rs
+}
 /**************************/
 let testCases = [
   {
@@ -120,6 +137,11 @@ let testFuns = {
   },
   threeSum: (nums) => {
     let rs = threeSum(nums)
+    rs.forEach(e => e.sort());
+    return rs.sort()
+  },
+  threeSum_redo: (nums) => {
+    let rs = threeSum_redo(nums)
     rs.forEach(e => e.sort());
     return rs.sort()
   }
