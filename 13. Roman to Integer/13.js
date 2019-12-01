@@ -105,6 +105,40 @@ var romanToInt_1 = function (s) {
   return num
 };
 
+var romanToInt_2nd = function (s) {
+  const RomanMap = {
+    'M': 1000,
+    'CM': 900,
+    'D': 500,
+    'CD': 400,
+    'C': 100,
+    'XC': 90,
+    'L': 50,
+    'XL': 40,
+    'X': 10,
+    'IX': 9,
+    'V': 5,
+    'IV': 4,
+    'I': 1
+  }
+
+  let sum = 0;
+  for (let i = 0, len = s.length; i < len; i++) {
+    let char = s.charAt(i)
+    if (['C', 'X', 'I'].indexOf(char) > -1 && i + 1 < len) {
+      let new_char = s.charAt(i) + s.charAt(i+1)
+      if (RomanMap[new_char]) {
+        sum += RomanMap[new_char]
+        i++
+        continue
+      }
+    }
+    sum += RomanMap[char]
+  }
+
+  return sum
+}
+
 /**************************/
 let testCases = [
   {
@@ -140,6 +174,7 @@ let testCases = [
 let testFuns = {
   romanToInt,
   romanToInt_1,
+  romanToInt_2nd
 }
 
 require('../TestFrame')(testCases, testFuns)
