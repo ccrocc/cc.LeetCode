@@ -4,6 +4,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+// O(n)
 var maxSubArray = function(nums) {
   let maxCur = max = nums[0]
   nums.slice(1).forEach(num => {
@@ -13,6 +14,18 @@ var maxSubArray = function(nums) {
   return max
 };
 
+
+var maxSubArray_1 = function(nums) {
+  let maxCur = max = nums[0], start = end = 0;
+  for (let i = 1, len = nums.length; i < len; i++) {
+    if (nums[i] > maxCur + nums[i]) start = i 
+    maxCur = Math.max(nums[i], maxCur + nums[i])
+    if (maxCur > max) end = i
+    max = Math.max(max, maxCur)
+  }
+  console.log(start, end, nums.slice(start, end+1)) // display the ans sub array
+  return max
+}
 
 /**************************/
 let testCases = [
@@ -33,6 +46,7 @@ let testCases = [
 
 let testFuns = {
   maxSubArray,
+  maxSubArray_1
 }
 
 require('../TestFrame')(testCases, testFuns)
