@@ -2,12 +2,6 @@
  * @summary 200. Number of Islands
  * @description https://leetcode.com/problems/number-of-islands/
  * @author ccro
- * @param {number} amount
- * @param {number[]} coins
- * @return {number}
- */
-
-/**
  * @param {character[][]} grid
  * @return {number}
  */
