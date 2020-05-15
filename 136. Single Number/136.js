@@ -5,7 +5,29 @@
  * @param {number[]} nums
  * @return {number}
  */
-var singleNumber = function(nums) {
+
+var singleNumber = function(nums) { // space: O(m); time: O(n)
+  let map = {}
+  nums.forEach(num => {
+    if (map.hasOwnProperty(num)) {
+      delete map[num]
+    } else {
+      map[num] = true
+    }
+  })
+  // assume just one single num
+  return Object.keys(map)[0] || null
+}
+
+var singleNumberXOR = function(nums) { // space: O(1); time: O(n)
+  let result = 0
+  nums.forEach(num => {
+    result ^= num
+  })
+  return result
+}
+
+var singleNumberMap = function(nums) { // space: O(m); time: O(n)
   let map = []
   nums.forEach(num => {
     if (map.indexOf(num) > -1) {
@@ -32,6 +54,8 @@ let testCases = [
 
 let testFuns = {
   singleNumber,
+  singleNumberXOR,
+  singleNumberMap,
 }
 
 require('../TestFrame')(testCases, testFuns)
