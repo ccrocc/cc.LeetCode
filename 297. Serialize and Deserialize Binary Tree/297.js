@@ -4,7 +4,7 @@
  * @author ccro
  */
 
- /**
+/**
  * Definition for a binary tree node.
  * function TreeNode(val) {
  *     this.val = val;
@@ -19,27 +19,23 @@
  * @return {string}
  */
 var serialize = function(root) {
-  let trace = []
-  
-  let serialize_trace = (node, trace) => {
+  let data = []
+  let nodes = [root]
 
-    (node && node.left) ? trace.push(node.left.val) : trace.push(null);
-    (node && node.right) ? trace.push(node.right.val) : trace.push(null);
-
-    node && node.left && serialize_trace(node.left, trace)
-    node && node.right && serialize_trace(node.right, trace)
-
-    // it will stop in node is null
+  while (nodes.length > 0) {
+    let node = nodes.shift()
+    data.push(node ? node.val : null)
+    if (node !== null) {
+      nodes.push(node.left, node.right)
+    }
   }
 
-  root && trace.push(root.val)
-  serialize_trace(root, trace)
-    
-  while (trace.slice(-1)[0] === null) {
-      trace.pop()
+  if (data.length > 0) { // clear `null`s in the last
+    while (data.slice(-1)[0] === null) {
+      data.pop()
+    }
   }
-
-  return trace
+  return data
 };
 
 /**
@@ -48,37 +44,22 @@ var serialize = function(root) {
  * @param {string} data
  * @return {TreeNode}
  */
-var deserialize = function(data) {
-  if (data.length == 0)  return null
+function deserialize(data) {
+  if (data.length == 0) return null
+  let nodes = data.map(c => c == null ? null : new TreeNode(parseInt(c, 10)))
 
-  let head_node = new TreeNode(data.shift())
-  // each time get two data
-  let trace_data = (node, data) => {
-    if (data.length == 0)  return
-    node.left = node.right = null
-    // build left node
-    if (data.length > 0) {
-      let left_data = data.shift()
-      if (left_data !== null) {
-        node.left = new TreeNode(left_data)
-      }
-    }
+  let root = nodes.shift()
+  let queue = [root]
 
-    // build right node
-    if (data.length > 0) {
-      let right_data = data.shift()
-      if (right_data !== null) {
-        node.right = new TreeNode(right_data)
-      }
-    }
-    
-    node.left && trace_data(node.left, data)
-    node.right && trace_data(node.right, data)
+  while (nodes.length > 0) {
+    let node = queue.shift()
+    if (node == null) continue
+    node.left = nodes.length > 0 ? nodes.shift() : null
+    node.right = nodes.length > 0 ? nodes.shift() : null
+    queue.push(node.left, node.right);
   }
-
-  trace_data(head_node, data)
-
-  return head_node
+  
+  return root;
 };
 
 /**

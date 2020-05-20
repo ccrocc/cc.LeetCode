@@ -25,71 +25,168 @@ function TreeNode(val, left, right) {
 }
 
 /**
- * Encodes a tree to a single string.
+ * Encodes a tree to a array.
  *
  * @param {TreeNode} root
- * @return {string}
+ * @return {array}
  */
-exports.serialize = function (root) {
-  let trace = []
+function serialize(root, type = 'BFS') {
+  if (type == 'BFS') return _serializeBFS(root)
+  if (type == 'DFS') return _serializeDFS(root)
+  if (type == 'DFS-IN') return _serializeDFS(root, 'IN')
+  if (type == 'DFS-PRE') return _serializeDFS(root, 'PRE')
+  if (type == 'DFS-POST') return _serializeDFS(root, 'POST')
+  return []
+}
 
-  let serialize_trace = (node, trace) => {
+function _serializeBFS(root) {
+  let data = []
+  let nodes = [root]
 
-    (node && node.left) ? trace.push(node.left.val): trace.push(null);
-    (node && node.right) ? trace.push(node.right.val): trace.push(null);
-
-    node && node.left && serialize_trace(node.left, trace)
-    node && node.right && serialize_trace(node.right, trace)
-
-    // it will stop in node is null
+  while (nodes.length > 0) {
+    let node = nodes.shift()
+    data.push(node ? node.val : null)
+    if (node !== null) {
+      nodes.push(node.left, node.right)
+    }
   }
 
-  root && trace.push(root.val)
-  serialize_trace(root, trace)
+  if (data.length > 0) { // clear `null`s in the last
+    while (data.slice(-1)[0] === null) {
+      data.pop()
+    }
+  }
+  return data
+}
 
-  while (trace.slice(-1)[0] === null) {
-    trace.pop()
+function _serializeBFS_old(root) {
+  let trace = []
+
+  let bfs_trace = (node) => {
+    trace.push((node && node.left) ? node.left.val : null)
+    trace.push((node && node.right) ? node.right.val : null)
+    if (node && (node.left || node.right)) {
+      bfs_trace(node.left)
+      bfs_trace(node.right)
+    }
+  }
+
+  if (root) {
+    trace.push(root.val)
+    bfs_trace(root)
+    // clear `null`s in the last
+    while (trace.slice(-1)[0] === null) {
+      trace.pop()
+    }
   }
 
   return trace
-};
+}
 
-/**
- * Decodes your encoded data to tree.
- *
- * @param {string} data
- * @return {TreeNode}
- */
-exports.deserialize = function (data) {
-  if (data.length == 0) return null
+// pre order only
+function _serializeDFS_loop(root) {
+  let data = []
 
-  let head_node = new TreeNode(data.shift())
-  // each time get two data
-  let trace_data = (node, data) => {
-    if (data.length == 0) return
-    node.left = node.right = null
-    // build left node
-    if (data.length > 0) {
-      let left_data = data.shift()
-      if (left_data !== null) {
-        node.left = new TreeNode(left_data)
-      }
+  let nodes = [root]
+  while (nodes.length > 0) {
+    let node = nodes.shift()
+    // if node has children(left, right), add to the front, and then get it first
+    if (node !== null) {
+      nodes.unshift(node.left, node.right)
+      data.push(node ? node.val: null)
     }
-
-    // build right node
-    if (data.length > 0) {
-      let right_data = data.shift()
-      if (right_data !== null) {
-        node.right = new TreeNode(right_data)
-      }
-    }
-
-    node.left && trace_data(node.left, data)
-    node.right && trace_data(node.right, data)
   }
 
-  trace_data(head_node, data)
+  if (data.length > 0) { // clear `null`s in the last
+    while (data.slice(-1)[0] === null) {
+      data.pop()
+    }
+  }
+  return data
+}
 
-  return head_node
+// default: pre-order; TODO: fix double `null`
+function _serializeDFS(root, order = 'PRE') {
+  let trace = []
+
+  let dfs_trace = (node) => {
+    order == 'PRE' && trace.push(node ? node.val : null)
+    node && (node.left || node.right) && dfs_trace(node.left)
+    order == 'IN' && trace.push(node ? node.val : null)
+    node && (node.left || node.right) && dfs_trace(node.right)
+    order == 'POST' && trace.push(node ? node.val : null)
+  }
+
+  if (root) {
+    dfs_trace(root)
+    // clear `null`s in the last
+    while (trace.slice(-1)[0] === null) {
+      trace.pop()
+    }
+  }
+
+  return trace
+}
+
+/**
+ * Decodes your encoded array data to tree.
+ *
+ * @param {array} data // default in bfs order
+ * @return {TreeNode}
+ */
+function deserialize(data) {
+  if (data.length == 0) return null
+  let nodes = data.map(c => c == null ? null : new TreeNode(parseInt(c, 10)))
+
+  let root = nodes.shift()
+  let queue = [root]
+
+  while (nodes.length > 0) {
+    let node = queue.shift()
+    if (node == null) continue
+    node.left = nodes.length > 0 ? nodes.shift() : null
+    node.right = nodes.length > 0 ? nodes.shift() : null
+    queue.push(node.left, node.right);
+  }
+  
+  return root;
 };
 
+exports.TreeNode = TreeNode
+exports.serialize = serialize
+exports.deserialize = deserialize
+
+/*
+let root = deserialize([1,2,3,null,null,4,5])
+console.log(`
+ * tree:
+     1
+    / \\
+   2   3
+      / \\
+     4   5
+`)
+console.log('BFS: ', serialize(root, 'BFS'))
+console.log('DFS: ', serialize(root, 'DFS'))
+console.log('DFS-PRE-ORDER: ', serialize(root, 'DFS-PRE'))
+console.log('DFS-IN-ORDER: ', serialize(root, 'DFS-IN'))
+console.log('DFS-POST-ORDER: ', serialize(root, 'DFS-POST'))
+
+let root1 = deserialize([0,-3,9,-10,null,5])
+console.log([0,-3,9,-10,null,5])
+console.log(root1)
+
+console.log(`
+ * tree:
+     0
+    / \\
+   -3   9
+  /    /
+-10   5
+`)
+console.log('BFS: ', serialize(root1, 'BFS'))
+console.log('DFS: ', serialize(root1, 'DFS'))
+console.log('DFS-PRE-ORDER: ', serialize(root1, 'DFS-PRE'))
+console.log('DFS-IN-ORDER: ', serialize(root1, 'DFS-IN'))
+console.log('DFS-POST-ORDER: ', serialize(root1, 'DFS-POST'))
+*/
