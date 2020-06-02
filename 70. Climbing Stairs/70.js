@@ -5,7 +5,18 @@
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
+var climbStairs = function(n) { // Recursion with mem
+  let rsMap = {}
+  let climbStairsRecursion = (n) => {
+    if (n <= 2) return n
+    if (rsMap.hasOwnProperty(n)) return rsMap[n]
+    rsMap[n] = climbStairsRecursion(n-1) + climbStairsRecursion(n-2)
+    return rsMap[n]
+  }
+  return climbStairsRecursion(n)
+}
+
+var climbStairs_DP = function(n) {
   if (n <= 0) return 1
 
   // DP[n] = DP[n-1] + DP[n-2];
@@ -43,6 +54,7 @@ let testCases = [
 
 let testFuns = {
   climbStairs,
+  climbStairs_DP
 }
 
 require('../TestFrame')(testCases, testFuns)
