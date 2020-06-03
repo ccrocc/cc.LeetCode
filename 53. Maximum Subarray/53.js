@@ -4,8 +4,7 @@
  * @param {number[]} nums
  * @return {number}
  */
-// O(n)
-var maxSubArray = function(nums) {
+var maxSubArray = function(nums) { // space:O(1); time: O(n)
   let maxCur = max = nums[0]
   nums.slice(1).forEach(num => {
     maxCur = Math.max(num, maxCur + num)
@@ -23,8 +22,20 @@ var maxSubArray_1 = function(nums) {
     if (maxCur > max) end = i
     max = Math.max(max, maxCur)
   }
-  console.log(start, end, nums.slice(start, end+1)) // display the ans sub array
+  // console.log(start, end, nums.slice(start, end+1)) // display the ans sub array
   return max
+}
+
+var maxSubArray_DP = function(nums) { // space:O(n); time:O(n). Can optimize space with function maxSubArray
+  if (!nums || nums.length == 0) return 0
+  if (nums.length < 2) return nums[0]
+
+  // max[i] = Math.max(max[i-1], max[i-1]+nums[i])
+  let maxList = [nums[0]]
+  for (let i = 1; i < nums.length; i++) {
+    maxList[i] = Math.max(nums[i], maxList[i-1]+nums[i])
+  }
+  return Math.max(...maxList)
 }
 
 /**************************/
@@ -46,7 +57,8 @@ let testCases = [
 
 let testFuns = {
   maxSubArray,
-  maxSubArray_1
+  maxSubArray_1,
+  maxSubArray_DP
 }
 
 require('../TestFrame')(testCases, testFuns)
